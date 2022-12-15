@@ -1,4 +1,6 @@
-from flask import Flask, make_response
+from flask import Flask
+
+from helper import is_isbn_or_key
 
 __author__ = '星光'
 
@@ -13,18 +15,7 @@ def search(q, page):
         q: 普通关键字 或者 isbn
         page
     """
-    # isbn isbn13 13个0到9的数字组成
-    # isbn10 10个0到9数字组成，含有一些‘ - ’
-    isbn_or_key = 'key'
-    # 判断isbn13
-    if len(q) == 13 and q.isdigit():
-        isbn_or_key = 'isbn'
-    
-    short_q = q.replace('-', '')
-    # 判断isbn10
-    if '-' in q and short_q == 10 and short_q.isdigit():
-        isbn_or_key = 'isbn'
-    pass
+    isbn_or_key = is_isbn_or_key(q)
 
 
 app.run(host='0.0.0.0', debug=app.config['DEBUG'], port=9527)
