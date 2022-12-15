@@ -2,7 +2,8 @@ from flask import Flask
 
 def create_app():
     app = Flask(__name__) # flask对象
-    app.config.from_object('config') # 导入配置文件
+    app.config.from_object('app.secure') # 导入配置文件
+    app.config.from_object('app.setting') # 导入配置文件
     register_blueprint(app) # app上注册蓝图
     
     return app

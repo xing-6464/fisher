@@ -25,11 +25,11 @@ def search():
         if isbn_or_key == 'isbn':
             result = YuShuBook.search_by_isbn(q)
         else:
-            result = YuShuBook.search_by_keyword(q)
+            result = YuShuBook.search_by_keyword(q, page)
 
         return jsonify(result)
     else:
-        return jsonify({'msg': '失败'})
+        return jsonify(form.errors)
     # 序列化
     # return json.dumps(result), 200, { 'content-type': 'application/json' }
     
