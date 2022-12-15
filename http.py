@@ -2,6 +2,7 @@ import requests
 
 
 class HTTP:
+    @staticmethod
     def get(self, url, return_json=True):
         # 发送http请求
         r = requests.get(url)
