@@ -1,13 +1,15 @@
 from flask import Flask
 
+
 __author__ = '星光'
 
 app = Flask(__name__)
+# 导入配置文件
+# 配置文件中的变量必须大写，否则读不到
+app.config.from_object('config')
 
-# @app.route('/hello')
+@app.route('/hello')
 def hello():
     return 'Hello, QiYue'
 
-app.add_url_rule('/hello', view_func=hello)
-
-app.run(debug=True, port=9527)
+app.run(host='0.0.0.0', debug=app.config['DEBUG'], port=9527)
