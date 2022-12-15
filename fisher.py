@@ -1,5 +1,4 @@
-from flask import Flask
-
+from flask import Flask, make_response
 
 __author__ = '星光'
 
@@ -10,6 +9,15 @@ app.config.from_object('config')
 
 @app.route('/hello')
 def hello():
-    return 'Hello, QiYue'
+    # status code 200, 404, 301
+    # content-type http headers
+    # content-type = text/html
+    # Response
+    headers = {
+        'content-type': 'text/plain'
+    }
+    # response = make_response('<html></html>', 404)
+    # response.headers = headers
+    return '<html></html>', 404, headers
 
 app.run(host='0.0.0.0', debug=app.config['DEBUG'], port=9527)
