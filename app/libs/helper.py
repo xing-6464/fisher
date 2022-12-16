@@ -1,6 +1,4 @@
 
-__author__ = '星光'
-
 def is_isbn_or_key(word):
     # isbn isbn13 13个0到9的数字组成
     # isbn10 10个0到9数字组成，含有一些‘ - ’
