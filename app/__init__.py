@@ -9,7 +9,8 @@ def create_app():
     register_blueprint(app) # app上注册蓝图
     
     db.init_app(app) # 使用插件
-    db.create_all()
+    with app.app_context():
+        db.create_all()
     return app
 
 def register_blueprint(app):
