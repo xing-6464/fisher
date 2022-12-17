@@ -3,7 +3,7 @@ from flask import jsonify, request
 from app.forms.book import SearchForm
 from app.libs.helper import is_isbn_or_key
 from app.spider.yushu_book import YuShuBook
-from app.view_models.book import BookViewModel
+from app.view_models.book import BookCollection
 from . import web
 
 
@@ -16,6 +16,7 @@ def search():
     """
     # 验证层
     form = SearchForm(request.args)
+    books = BookCollection()
     # 参数验证成功
     if form.validate():
 
@@ -23,14 +24,14 @@ def search():
         page = form.page.data
 
         isbn_or_key = is_isbn_or_key(q)
+        yushu_book = YuShuBook()
         if isbn_or_key == 'isbn':
-            result = YuShuBook.search_by_isbn(q)
-            result = BookViewModel.package_single(result, q)
+            yushu_book.search_by_isbn(q)
         else:
-            result = YuShuBook.search_by_keyword(q, page)
-            result = BookViewModel.package_collection(result, q)
+            yushu_book.search_by_keyword(q, page)
 
-        return jsonify(result)
+        books.fill(yushu_book, q)
+        return jsonify(books)
     else:
         return jsonify(form.errors)
     # 序列化
