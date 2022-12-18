@@ -2,13 +2,9 @@ from flask import Flask
 from flask_login import LoginManager
 
 from app.models.base import db
-from app.models.user import User
 
 login_manager = LoginManager()
 
-@login_manager.user_loader
-def load_user(user_id):
-    return User.get(user_id)
 
 def create_app():
     app = Flask(__name__) 
