@@ -32,18 +32,11 @@ def search():
             yushu_book.search_by_keyword(q, page)
 
         books.fill(yushu_book, q)
-        return json.dumps(books, default=lambda o: o.__dict__)
     else:
-        return jsonify(form.errors)
-    # 序列化
-    # return json.dumps(result), 200, { 'content-type': 'application/json' }
+        flash('搜索的关键字不符合要求，请重新输入关键字')
+    
+    return render_template('search_result.html', books=books)
 
-@web.route('/test')
-def test():
-    r = {
-        'name': '星光',
-        'age': 18
-    }
-    flash('hello, qiyue')
-
-    return render_template('test.html', data=r)
+@web.route('/book/<isbn>/detail')
+def book_detail(isbn):
+    pass
