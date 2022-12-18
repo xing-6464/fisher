@@ -10,6 +10,7 @@ wtforms = "*"
 flask-sqlalchemy = "*"
 cymysql = "*"
 email-validator = "*"
+flask-login = "*"
 
 [dev-packages]
 
