@@ -4,10 +4,10 @@
     {{ data.name }}
     {{ data.age }}
     {% if data.age > 18 %}
-    {{ data.name }}
+        {{ data.name }}
     {% elif data.age == 18 %}
-    do
+        {{ data.key | default('未名') }}
     {% else %}
-    {{ data.age }}
+        {{ data.age }}
     {% endif %}
 {% endblock %}
