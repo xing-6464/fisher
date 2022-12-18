@@ -7,6 +7,8 @@
         {{ data.name }}
     {% elif data.age == 18 %}
         {{ data.key | default('未名') }}
+        {% set messages = get_flashed_messages() %}
+        {{ messages }}
     {% else %}
         {{ data.age }}
     {% endif %}

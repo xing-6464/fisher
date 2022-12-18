@@ -1,4 +1,4 @@
-from flask import jsonify, request, render_template
+from flask import jsonify, request, render_template, flash
 import json
 
 from app.forms.book import SearchForm
@@ -44,5 +44,6 @@ def test():
         'name': '星光',
         'age': 18
     }
+    flash('hello, qiyue')
 
     return render_template('test.html', data=r)
