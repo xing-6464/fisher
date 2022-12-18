@@ -1,5 +1,5 @@
-from wtforms import Form, StringField, IntegerField, PasswordField
-from wtforms.validators import Length, NumberRange, DataRequired, Email
+from wtforms import Form, StringField, PasswordField
+from wtforms.validators import Length, DataRequired, Email
 
 class RegisterForm(Form):
     email = StringField(validators=[DataRequired(), Length(8, 64), Email(message='电子邮箱不符合规范')])
