@@ -1,11 +1,11 @@
 from . import web
-
-__author__ = '七月'
+from flask import render_template
 
 
 @web.route('/register', methods=['GET', 'POST'])
 def register():
-    pass
+    # request.form
+    return render_template('auth/register.html', form={ 'data': {} })
 
 
 @web.route('/login', methods=['GET', 'POST'])
