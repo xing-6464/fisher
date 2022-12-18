@@ -3,12 +3,12 @@ from flask import Flask
 from app.models.book import db
 
 def create_app():
-    app = Flask(__name__) # flask对象
-    app.config.from_object('app.secure') # 导入配置文件
-    app.config.from_object('app.setting') # 导入配置文件
-    register_blueprint(app) # app上注册蓝图
+    app = Flask(__name__) 
+    app.config.from_object('app.secure')
+    app.config.from_object('app.setting') 
+    register_blueprint(app)
     
-    db.init_app(app) # 使用插件
+    db.init_app(app) 
     with app.app_context():
         db.create_all()
     return app
