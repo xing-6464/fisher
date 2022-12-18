@@ -1,4 +1,4 @@
-from wtforms import Form, StringField, PasswordField
+from wtforms import Form, StringField, PasswordField 
 from wtforms.validators import Length, DataRequired, Email
 
 class RegisterForm(Form):

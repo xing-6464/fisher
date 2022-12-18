@@ -14,6 +14,6 @@ def create_app():
     return app
 
 def register_blueprint(app):
-    from app.web.book import web
+    from app.web import web
     # 把蓝图注册到app对象上
     app.register_blueprint(web)
