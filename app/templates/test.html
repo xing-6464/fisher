@@ -9,5 +9,12 @@
 <body>
     {{ data.name }}
     {{ data.age }}
+    {% if data.age > 18 %}
+        {{ data.name }}
+    {% elif data.age == 18 %}
+        do
+    {% else %}
+        {{ data.age }}
+    {% endif %}
 </body>
 </html>
