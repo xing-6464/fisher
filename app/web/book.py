@@ -1,4 +1,4 @@
-from flask import jsonify, request
+from flask import jsonify, request, render_template
 import json
 
 from app.forms.book import SearchForm
@@ -37,3 +37,12 @@ def search():
         return jsonify(form.errors)
     # 序列化
     # return json.dumps(result), 200, { 'content-type': 'application/json' }
+
+@web.route('/test')
+def test():
+    r = {
+        'name': '星光',
+        'age': 18
+    }
+
+    return render_template('test.html', data=r)
